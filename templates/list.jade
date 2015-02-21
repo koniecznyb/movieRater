@@ -1,0 +1,27 @@
+extends layout
+block content
+
+    .jumbotron
+        .container
+            .col-md-8
+                h1 Find a movie:
+                form.form-inline(action="/", method="post")
+                    .form-group
+                        input#query.form-control(type='text', name='query', placeholder=searchString)
+                    button.btn.btn-default(type='submit') Submit
+    .container
+        h3 Looking for: #{searchString}
+        .col-md-8
+            h4 Title
+        .col-md-4
+            h4 Rating
+
+        each movie in movies
+            .col-md-8
+            p #{movie.title}
+            .col-md-4
+            p #{movie.rating}
+
+    hr
+    footer
+        p © 2015
