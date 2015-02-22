@@ -1,4 +1,4 @@
-body {
+/*body {
   padding: 50px;
   font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -16,6 +16,13 @@ p{
 
     letter-spacing: 1px;
     font-size:14px;
-
-
+}
+*/
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    /*letter-spacing: 1px;*/
+    font: 14px;
+    /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
 }

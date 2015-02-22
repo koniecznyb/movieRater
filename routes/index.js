@@ -5,6 +5,8 @@ var flux = require('flux');
 var http = require('http');
 var request = require('request');
 
+var NUMBER_OF_TORRENTS = 20;
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index', {
@@ -12,9 +14,9 @@ router.get('/', function(req, res, next) {
     });
 });
 
-
 router.get('/searching', function(req, res) {
     var val = req.query.search;
+
 
     async.waterfall([
 
@@ -23,11 +25,11 @@ router.get('/searching', function(req, res) {
 
             },
 
-            function(val, callback) {
+            function searchForTorrents(val, callback) {
                 var queries = [];
                 var m;
                 flux.search(val, function(err, torrents) {
-                    for (var c = 0; c < 5; c++) {
+                    for (var c = 0; c < NUMBER_OF_TORRENTS; c++) {
                         var re = /^.*([1][9][0-9][0-9]|[2][0-9][0-9][0-9]).*$/ig;
                         while ((m = re.exec(torrents[c].title)) !== null) {
                             if (m.index === re.lastIndex) {
@@ -44,7 +46,7 @@ router.get('/searching', function(req, res) {
 
             },
 
-            function(queries, cb) {
+            function getMovieRatingsIMDB(queries, cb) {
                 functions = [];
 
                 queries.forEach(function(query) {
@@ -68,13 +70,24 @@ router.get('/searching', function(req, res) {
         ],
 
         function(err, result) {
+            resultsArray = [];
             result.forEach(function(movie) {
-                res.send(movie);
+                if (movie.Response === 'True' && movie.imdbRating !== 'N/A')
+                    resultsArray.push({
+                        title: movie.Title,
+                        rating: movie.imdbRating,
+                        votes: movie.imdbVotes,
+                        year: movie.Year,
+                        released: movie.Released
+                    });
             });
-        }
+            res.send(resultsArray);
+    }
 
 
     );
+
+
 
 });
 
