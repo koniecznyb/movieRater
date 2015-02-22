@@ -5,10 +5,18 @@ block content
         .container
             .col-md-8
                 h1 Find a movie:
-                form.form-inline(action="/", method="post")
-                    .form-group
-                        input#query.form-control(type='text', name='query', placeholder='Enter query')
-                    button.btn.btn-default(type='submit') Submit
+                input#search(type='search',  placeholder='Enter query')
+    .container
+        .col-md-8
+            h2 Title
+            p#results
+        .col-md-4
+            h2 Rating
+            p#results
     footer
         p © 2015
+
+
+    script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+    script(src="/javascripts/main.js")
 
