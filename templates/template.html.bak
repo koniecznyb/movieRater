@@ -1,0 +1,80 @@
+<script id="search-results" type="text/x-handlebars-template">
+<ul>
+<div class="col-md-4">
+    <h2>Title</h2>
+
+        {{#each movies}}
+            {{#imdbQuery}}
+                <li>{{Title}}</li>
+            {{/imdbQuery}}
+        {{/each}}
+
+</div>
+<div class="col-md-1">
+    <h2>Rating</h2>
+
+        {{#each movies}}
+            {{#imdbQuery}}
+                <li>{{imdbRating}}</li>
+            {{/imdbQuery}}
+        {{/each}}
+
+</div>
+<div class="col-md-2">
+    <h2>Votes</h2>
+    <ul>
+        {{#each movies}}
+            {{#imdbQuery}}
+                <li>{{imdbVotes}}</li>
+            {{/imdbQuery}}
+        {{/each}}
+    </ul>
+</div>
+<div class="col-md-1">
+    <h2>Year</h2>
+
+        {{#each movies}}
+            {{#imdbQuery}}
+                <li>{{Year}}</li>
+            {{/imdbQuery}}
+        {{/each}}
+
+</div>
+<div class="col-md-2">
+    <h2>Size</h2>
+
+        {{#each movies}}
+            {{#torrentQuery}}
+                {{#torrentInfo}}
+                    <li>{{size}}</li>
+                {{/torrentInfo}}
+            {{/torrentQuery}}
+        {{/each}}
+
+</div>
+<div class="col-md-1">
+    <h2>Seeds</h2>
+
+        {{#each movies}}
+            {{#torrentQuery}}
+                {{#torrentInfo}}
+                    <li>{{seeds}}</li>
+                {{/torrentInfo}}
+            {{/torrentQuery}}
+        {{/each}}
+
+</div>
+<div class="col-md-1">
+    <h2>Quality</h2>
+
+        {{#each movies}}
+            {{#torrentQuery}}
+                {{#contentInfo}}
+                    <li>{{quality}}</li>
+                {{/contentInfo}}
+            {{/torrentQuery}}
+        {{/each}}
+
+</div>
+</ul>
+</script>

@@ -1,20 +1,13 @@
 extends layout
 block content
 
-    .jumbotron
+    .jumbotron.inverse
         .container
-            .col-md-8
+            .col-md-12
                 h1 Find a movie
+                    small  try movies 2015
                 input#search(type='search',  placeholder='Enter query')
     .container
-        .col-md-6
-            h2 Title
-        .col-md-1
-            h2 Rating
-        .col-md-1
-            h2 #Votes
-        .col-md-1
-            h2 Year
         div#results
             include template.html
     footer

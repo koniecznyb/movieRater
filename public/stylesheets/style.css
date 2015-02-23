@@ -18,6 +18,10 @@ p{
     font-size:14px;
 }
 */
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #999;
+ }
 
 h2{
   letter-spacing: 1px;
@@ -31,7 +35,10 @@ ul {
 
 li {
   font: 200 14px/1.5 Helvetica, Verdana, sans-serif;
-  border-bottom: 1px solid #ccc;
+}
+
+li li{
+  font: 8px;
 }
 
 li:last-child {

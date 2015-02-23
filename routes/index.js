@@ -5,7 +5,7 @@ var flux = require('flux');
 var http = require('http');
 var request = require('request');
 
-var NUMBER_OF_TORRENTS = 20;
+var NUMBER_OF_TORRENTS = 5;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -27,35 +27,29 @@ router.get('/searching', function(req, res) {
 
             function searchForTorrents(val, callback) {
                 var queries = [];
-                var m;
                 flux.search(val, function(err, torrents) {
                     for (var c = 0; c < NUMBER_OF_TORRENTS; c++) {
                         var re = /^.*([1][9][0-9][0-9]|[2][0-9][0-9][0-9]).*$/ig;
                         while ((m = re.exec(torrents[c].title)) !== null) {
-                            if (m.index === re.lastIndex) {
-                                re.lastIndex++;
-                            }
-                            console.log(m);
-                            var movieTitle = m.input;
-                            var str = movieTitle.substring(0, movieTitle.search(movieTitle.replace(/^.*([1][9][0-9][0-9]|[2][0-9][0-9][0-9]).*$/ig, '$1')));
-                            queries.push(str);
+                            queries.push(torrents[c]);
                         }
                     }
                     callback(null, queries);
                 });
-
             },
 
             function getMovieRatingsIMDB(queries, cb) {
-                functions = [];
+                var functions = [];
 
                 queries.forEach(function(query) {
                     functions.push(function(callback) {
-                        request.post('http://www.omdbapi.com/?t=' + query,
+                        var mov = query.title;
+                        var movieName = mov.substring(0, mov.search(mov.replace(/^.*([1][9][0-9][0-9]|[2][0-9][0-9][0-9]).*$/ig, '$1')));
+                        request.post('http://www.omdbapi.com/?t=' + movieName,
                             function(error, response, body) {
                                 if (!error && response.statusCode == 200) {
                                     var JSONmovie = JSON.parse(body);
-                                    callback(null, JSONmovie);
+                                    callback(null, JSONmovie, query);
                                 }
                             });
                     });
@@ -70,19 +64,17 @@ router.get('/searching', function(req, res) {
         ],
 
         function(err, result) {
-            resultsArray = [];
-            result.forEach(function(movie) {
-                if (movie.Response === 'True' && movie.imdbRating !== 'N/A')
-                    resultsArray.push({
-                        title: movie.Title,
-                        rating: movie.imdbRating,
-                        votes: movie.imdbVotes,
-                        year: movie.Year,
-                        released: movie.Released
-                    });
+            var movies = [];
+            result.forEach(function(res) {
+                movies.push({
+                    torrentQuery: res[1],
+                    imdbQuery: res[0]
+                });
             });
-            res.send(resultsArray);
-    }
+            console.log(movies);
+            res.send(movies);
+
+        }
 
 
     );
