@@ -1,6 +1,30 @@
 <script id="search-results" type="text/x-handlebars-template">
-  {{#each resultsArray}}
-  <li>{{title}}{{rating}}</li>
-  </ul>
-  {{/each}}
+    <div class="col-md-6">
+        <ul>
+          {{#each resultsArray}}
+            <li>{{title}}</li>
+          {{/each}}
+      </ul>
+  </div>
+  <div class="col-md-1">
+      <ul>
+          {{#each resultsArray}}
+            <li>{{rating}}</li>
+          {{/each}}
+      </ul>
+  </div>
+  <div class="col-md-1">
+      <ul>
+          {{#each resultsArray}}
+            <li>{{votes}}</li>
+          {{/each}}
+      </ul>
+  </div>
+  <div class="col-md-1">
+      <ul>
+          {{#each resultsArray}}
+            <li>{{year}}</li>
+          {{/each}}
+      </ul>
+  </div>
 </script>

@@ -5,15 +5,27 @@ var flux = require('flux');
 var http = require('http');
 var request = require('request');
 
-var val = 'movies 2014';
+var val = 'Batman';
 
-queries = ['batman', 'interstellar', 'hobbit'];
-
-request.post('http://www.omdbapi.com/?t=' + 'batman',
-    function(error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var JSONmovie = JSON.parse(body);
-            if (JSONmovie.Response !== 'False' && JSONmovie.imdbRating !== 'N/A')
-                console.log(JSONmovie.imdbRating);
+function searchForTorrents(val, callback) {
+    var queries = [];
+    flux.search(val, function(err, torrents) {
+        for (var c = 0; c < 10; c++) {
+            var re = /^.*([1][9][0-9][0-9]|[2][0-9][0-9][0-9]).*$/ig;
+            while ((m = re.exec(torrents[c].title)) !== null) {
+            //     if (m.index === re.lastIndex) {
+            //         re.lastIndex++;
+            //     }
+            //     // console.log(m);
+            //     var movieTitle = m.input;
+            //     var str = movieTitle.substring(0, movieTitle.search(movieTitle.replace(/^.*([1][9][0-9][0-9]|[2][0-9][0-9][0-9]).*$/ig, '$1')));
+                queries.push(torrents[c]);
+            }
         }
+        callback(queries);
     });
+}
+
+searchForTorrents(val, function(queries) {
+    console.log(queries);
+});

@@ -4,12 +4,18 @@ block content
     .jumbotron
         .container
             .col-md-8
-                h1 Find a movie:
+                h1 Find a movie
                 input#search(type='search',  placeholder='Enter query')
     .container
-        .col-md-4
+        .col-md-6
             h2 Title
-            ul#results
+        .col-md-1
+            h2 Rating
+        .col-md-1
+            h2 #Votes
+        .col-md-1
+            h2 Year
+        div#results
             include template.html
     footer
         p © 2015

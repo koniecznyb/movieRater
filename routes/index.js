@@ -35,7 +35,7 @@ router.get('/searching', function(req, res) {
                             if (m.index === re.lastIndex) {
                                 re.lastIndex++;
                             }
-
+                            console.log(m);
                             var movieTitle = m.input;
                             var str = movieTitle.substring(0, movieTitle.search(movieTitle.replace(/^.*([1][9][0-9][0-9]|[2][0-9][0-9][0-9]).*$/ig, '$1')));
                             queries.push(str);
