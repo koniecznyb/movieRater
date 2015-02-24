@@ -1,6 +1,5 @@
 extends layout
 block content
-
     .jumbotron.inverse
         .container
             .col-md-12
@@ -11,10 +10,13 @@ block content
         div#results
             include template.html
     footer
-        p © 2015
+        p#foot © 2015
 
 
     script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
     script(src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js")
+        //- <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    script(src="/bower_components/jquery/dist/jquery.min.js")
+    script(src="/bower_components/jquery.tablesorter/dist/js/jquery.tablesorter.min.js")
     script(src="/javascripts/main.js")
 

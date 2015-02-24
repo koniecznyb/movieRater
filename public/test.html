@@ -11,31 +11,56 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>1
   </head>
+<script>
+$(document).ready(function()
+    {
+        $("#myTable").tablesorter();
+        alert("hello");
+    }
+);
 
+</script>
 <body>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Row</th>
-            <th>Title</th>
-            <th>Rating</th>
-            <th>Votes</th>
-            <th>Year</th>
-        </tr>
-    </thead>
-    <tbody>
-     {{#each movies}}
-        <tr>
-            {{#imdbQuery}}
-            <td>{{Title}}</td>
-            <td>{{Title}}</td>
-            <td>{{Title}}</td>
-            <td>{{Title}}</td>
-            <td>{{Title}}</td>
-            {{/imdbQuery}}
-        </tr>
-      {{/each}}
-    </tbody>
+<table id="myTable" class="tablesorter">
+<thead>
+<tr>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Email</th>
+    <th>Due</th>
+    <th>Web Site</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>Smith</td>
+    <td>John</td>
+    <td>jsmith@gmail.com</td>
+    <td>$50.00</td>
+    <td>http://www.jsmith.com</td>
+</tr>
+<tr>
+    <td>Bach</td>
+    <td>Frank</td>
+    <td>fbach@yahoo.com</td>
+    <td>$50.00</td>
+    <td>http://www.frank.com</td>
+</tr>
+<tr>
+    <td>Doe</td>
+    <td>Jason</td>
+    <td>jdoe@hotmail.com</td>
+    <td>$100.00</td>
+    <td>http://www.jdoe.com</td>
+</tr>
+<tr>
+    <td>Conway</td>
+    <td>Tim</td>
+    <td>tconway@earthlink.net</td>
+    <td>$50.00</td>
+    <td>http://www.timconway.com</td>
+</tr>
+</tbody>
 </table>
 
 </body>
