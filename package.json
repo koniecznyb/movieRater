@@ -11,6 +11,7 @@
     "cookie-parser": "^1.3.4",
     "debug": "^2.1.1",
     "express": "^4.11.2",
+    "flux": "git://github.com/ProjectMoon/flux",
     "jade": "^1.9.2",
     "morgan": "^1.5.1",
     "request": "^2.53.0",

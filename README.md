@@ -8,7 +8,6 @@ After cloning run:
 ```
     $ cd movieRater/
     $ npm install
-    $ git clone https://github.com/ProjectMoon/flux
-    $ mv flux node_modules
+    $ node bin/www
 ```
 Requires https://github.com/ProjectMoon/flux module.

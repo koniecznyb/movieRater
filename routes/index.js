@@ -39,7 +39,6 @@ router.get('/searching', function(req, res) {
                             queries.push(torrents[c]);
                         }
                     }
-                    // console.log(queries);
                     callback(null, queries);
                 });
             },
@@ -59,8 +58,6 @@ router.get('/searching', function(req, res) {
                                 } else if (response.statusCode != 200) {
                                     callback(null);
                                 } else {
-                                    console.log(mov);
-                                    console.log(movieName);
                                     console.log(error + ": " + response.statusCode);
                                     res.end('error');
                                     return;
@@ -88,7 +85,6 @@ router.get('/searching', function(req, res) {
 
             result.forEach(function(res) {
                 if (res !== undefined && res[0] .Response !== 'False') {
-                    console.log(res[0]);
                     movies.push({
                         torrentQuery: res[1],
                         imdbQuery: res[0]
