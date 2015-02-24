@@ -18,47 +18,7 @@ p{
     font-size:14px;
 }
 */
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-   background-color: #999;
- }
-
-h2{
-  letter-spacing: 1px;
-  font-size: 20px;
-}
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #E6E6E6;
 }
 
-li {
-  font: 200 14px/1.5 Helvetica, Verdana, sans-serif;
-}
-
-li li{
-  font: 8px;
-}
-
-li:last-child {
-  border: none;
-}
-
-li a {
-  text-decoration: none;
-  color: #000;
-  display: block;
-  width: 200px;
-
-  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
-  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
-  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
-  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
-  transition: font-size 0.3s ease, background-color 0.3s ease;
-}
-
-li a:hover {
-  font-size: 30px;
-  background: #f6f6f6;
-}
