@@ -30,7 +30,8 @@ router.get('/searching', function(req, res) {
                 flux.search(val, function(err, torrents) {
                     if (err) {
                         console.log(err);
-                        res.end('No results found for query: ' + val + '!');
+                        res.end(err);
+                        // res.end('No results found for query: ' + val + '!');
                         return;
                     }
                     for (var c = 0; c < NUMBER_OF_TORRENTS; c++) {

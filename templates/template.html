@@ -7,34 +7,38 @@
             <th>#</th>
             <th>Title</th>
             <th>Rating</th>
-            <th>Votes</th>
+            <th># of Votes</th>
+            <th>Quality</th>
             <th>Size</th>
             <th>Seeds</th>
-            <th>Quality</th>
+            <th>Torrent Link</th>
+            <th>IMDB link</th>
+            <th>Plot</th>
         </tr>
     </thead>
     <tbody>
      {{#each movies}}
-        {{#torrentQuery}}
-            {{#torrentInfo}}
-                <tr onclick="document.location = 'https://torrentz.eu/{{hash}}';">
-            {{/torrentInfo}}
-        {{/torrentQuery}}
+        <tr>
             {{#imdbQuery}}
-            <td>{{@index}}</td>
-            <td>{{Title}}</td>
-            <td>{{imdbRating}}</td>
-            <td>{{imdbVotes}}</td>
+                <td>{{@index}}</td>
+                <td>{{Title}}</td>
+                <td>{{imdbRating}}</td>
+                <td>{{imdbVotes}}</td>
             {{/imdbQuery}}
             {{#torrentQuery}}
-                {{#torrentInfo}}
-                    <td>{{size}}</td>
-                    <td>{{seeds}}</td>
-                {{/torrentInfo}}
                 {{#contentInfo}}
                     <td>{{quality}}</td>
                 {{/contentInfo}}
+                {{#torrentInfo}}
+                    <td>{{size}}</td>
+                    <td>{{seeds}}</td>
+                    <td><a href='https://torrentz.eu/{{hash}}'>Download</a></td>
+                {{/torrentInfo}}
             {{/torrentQuery}}
+            {{#imdbQuery}}
+                <td><a href='http://www.imdb.com/title/{{imdbID}}'>Imdb Link</a></td>
+                <td>{{Plot}}</td>
+            {{/imdbQuery}}
         </tr>
       {{/each}}
     </tbody>
