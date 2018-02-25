@@ -1,8 +1,8 @@
-###Description
+### Description
 
-Combines results from torrent.eu and IMDB database. Shows not only torrents details  but also their imdb rating and number of votes.
+Combines results from torrent.eu and IMDB database. Shows not only torrents details but also their imdb rating and number of votes.
 
-###Intallation
+### Installation
 
 After cloning run:
 ```
